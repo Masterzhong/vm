@@ -1,0 +1,26 @@
+<html>
+<body>
+    <label for="prop" name="名称">
+      <input type="text" id="prop">
+    </label>
+    <p id="text"></p>
+</body>
+<script>
+   var obj = {}
+   var inputProps = document.getElementById('prop')
+   var text = document.getElementById('text')
+   Object.defineProperty(obj,'props',{
+       get:function(){
+           return obj
+       },
+       set:function(val){
+           inputProps.value = val
+           text.innerHTML = val
+       }
+   })
+  //通过监听输入的值 改变OBJ的属性 实现双向绑定
+  inputProps.addEventListener('keyup',function(e){
+        obj.props = e.target.value
+  })
+</script>
+</html>
